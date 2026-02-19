@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Etsy Analyzer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        input, button { padding: 10px; font-size: 16px; width: 100%; margin-top: 10px; }
+        .box { margin-top: 20px; padding: 15px; background: #f3f3f3; border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <h2>Etsy Preis Analyzer</h2>
+
+    <form method="POST">
+        <input type="text" name="keyword" placeholder="Keyword eingeben..." required>
+        <button type="submit">Analysieren</button>
+    </form>
+
+    {% if result %}
+    <div class="box">
+        <p><strong>Anzahl Listings:</strong> {{ result.count }}</p>
+        <p><strong>Ø Preis:</strong> {{ result.average }} €</p>
+        <p><strong>Median:</strong> {{ result.median }} €</p>
+        <p><strong>Sweetspot:</strong> {{ result.sweetspot_low }} – {{ result.sweetspot_high }} €</p>
+        <p><strong>Wettbewerb:</strong> {{ result.competition }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
